@@ -9,8 +9,7 @@ output "available_locations" {
 
 output "resource_groups" {
     value = [for rg in module.resource_groups: {
-        id = rg.resource_group.id
-        name = rg.resource_group.name
+        id = rg.resource_group.id       
     }]
 }
 

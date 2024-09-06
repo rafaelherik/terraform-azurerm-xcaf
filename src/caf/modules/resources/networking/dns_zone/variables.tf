@@ -21,3 +21,16 @@ variable "cname_records" {
         record = string
     }))
 }
+
+variable "role_assignments" {
+    description = "The role assignments of the DNS zone"
+    type = map(object({
+        principal_id = string
+        role_definition_id = string
+        condition = string
+        condition_version = string
+        delegated_managed_identity_resource_id = string
+        principal_type = string
+        skip_service_principal_aad_check = bool
+    }))
+}

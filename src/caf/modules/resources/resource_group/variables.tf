@@ -13,3 +13,13 @@ variable "tags" {
     description = "The tags of the resource group"
     default = {}
 }
+  
+
+  variable "role_assignments" {
+    type = map(object({
+        principal_id = string
+        role_definition_id = string
+    }))
+    description = "The role assignments of the virtual network"
+    default = {}
+}
