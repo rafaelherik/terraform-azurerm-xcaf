@@ -12,7 +12,6 @@ module "virutal_networks" {
 }
 
 # Configuring the DNS zones
-
 module "dns_zones" {
     source = "../../resources/networking/dns_zone"
     for_each = toset(var.networking.dns_zones)
@@ -22,11 +21,7 @@ module "dns_zones" {
     cname_records = each.value.cname_records
 }
 
-
-
-
 # Configuring the private DNS zones
-
 module "private_dns_zones" {
     source = "../../resources/networking/private_dns_zone"
     for_each = toset(var.networking.private_dns_zones)

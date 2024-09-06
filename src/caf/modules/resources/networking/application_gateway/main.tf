@@ -1,5 +1,6 @@
 data "azurerm_public_ip" "public_ip" {
-    name = var.public_ip_name
+    for_each = var.public_ip_addresses
+    name = each.value.public_ip_address_name
     resource_group_name = var.resource_group_name
 }
 
@@ -39,7 +40,7 @@ resource "azurerm_application_gateway" "application_gateway" {
     dynamic frontend_ip_configuration {
         for_each = var.frontend_ip_configurations
         content {
-            name                 = "frontend_ip_config"
+            name                 = each.value.name
             public_ip_address_id = data.azurerm_public_ip.public_ip.id
         }
     }
@@ -79,7 +80,7 @@ resource "azurerm_application_gateway" "application_gateway" {
     dynamic backend_address_pool {
         for_each = var.backend_address_pools
         content {   
-            name = "backend-address-pool"
+            name = each.value.name
         }
     }
 

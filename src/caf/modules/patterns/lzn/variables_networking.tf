@@ -41,6 +41,7 @@ variable "networking" {
                 name = string
                 ttl = number
                 records = list(string)
+                
             })))
             srv_records = list(map(object({
                 name = string

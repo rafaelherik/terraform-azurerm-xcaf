@@ -1,2 +1,14 @@
-
-/src/caf/.terraform
+# Common Terraform ignores
+*.tfstate
+*.tfstate.*
+*.tfvars
+*.tfvars.json
+.terraformrc
+terraform.rc
+override.tf
+override.tf.json
+*_override.tf
+*_override.tf.json
+.terraform.lock.hcl
+crash.log
+crash.*.log
