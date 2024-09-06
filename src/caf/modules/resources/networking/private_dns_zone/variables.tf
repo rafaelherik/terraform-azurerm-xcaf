@@ -7,6 +7,10 @@ variable "resource_group_name" {
   description = "The name of the resource group"
   type        = string
 }
+variable "location" {
+  description = "The location of the private DNS zone"
+  type        = string
+}
 
 variable "tags" {
   description = "The tags of the private DNS zone"
@@ -20,6 +24,7 @@ variable "virtual_network_links" {
     name = string
     resource_group_name = string
   }))
+  default = {}
 }
 
 variable "a_records" {
@@ -29,6 +34,7 @@ variable "a_records" {
     ttl = number
     records = list(string)
   }))
+  default = {}
 }
 
 variable "cname_records" {
@@ -38,6 +44,7 @@ variable "cname_records" {
     ttl = number
     records = list(string)
   }))
+  default = {}
 }
 
 variable "mx_records" {
@@ -45,11 +52,17 @@ variable "mx_records" {
   type        = map(object({
     name = string
     ttl = number
-    records = list(object({
-      preference = number
-      exchange = string
-    }))
+    records = object({
+        priority = number
+        weight = number
+        port = number
+        target = string
+        exchange = string
+        preference = number
+        mail_exchange = string
+    })
   }))
+  default = {}
 }
 
 variable "ptr_records" {
@@ -66,13 +79,14 @@ variable "srv_records" {
   type        = map(object({
     name = string
     ttl = number
-    records = list(object({
+    records = object({
       priority = number
       weight = number
       port = number
       target = string
-    }))
+    })
   }))
+  default = {}
 }
 
 variable "txt_records" {
@@ -82,5 +96,19 @@ variable "txt_records" {
     ttl = number  
     records = list(string)
   }))
+  default = {}
 }
 
+variable "role_assignments" {
+  description = "The role assignments of the private DNS zone"
+  type        = map(object({
+    principal_id = string
+    role_definition_id_or_name = string
+    condition = string
+    condition_version = string
+    delegated_managed_identity_resource_id = string
+    principal_type = string
+    skip_service_principal_aad_check = bool
+  }))
+  default = {}
+}

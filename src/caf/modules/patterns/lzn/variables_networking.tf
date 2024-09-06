@@ -18,37 +18,55 @@ variable "networking" {
             resource_group_name = string
             location = string
             tags = map(string)
-            a_records = list(map(object({
+            virtual_network_links = optional(map(object({
+                name = string
+                subnet_id = string
+                resource_group_name = string
+            })),{})
+            a_records = optional(map(object({
                 name = string
                 ttl = number
                 records = list(string)
-            })))
-            txt_records = list(map(object({
+            })),{})
+            txt_records = optional(map(object({
                 name = string
                 ttl = number
                 records = list(string)
-            })))
-            cname_records = list(map(object({
+            })),{})
+            cname_records = optional(map(object({
                 name = string
                 ttl = number
                 records = list(string)
-            })))
-            mx_records = list(map(object({
+            })),{})
+            mx_records = optional(map(object({
                 name = string
                 ttl = number
-                records = list(string)
-                
-            })))
-            srv_records = list(map(object({
+                records = object({
+                    priority = number
+                    weight = number
+                    port = number
+                    target = string
+                    exchange = string
+                    preference = number
+                    mail_exchange = string
+
+                })
+            })),{})
+            srv_records = optional(map(object({
                 name = string
                 ttl = number
-                records = list(string)
-            })))
-            ptr_records = list(map(object({
+                records = object({
+                    priority = number
+                    weight = number
+                    port = number
+                    target = string
+                })
+            })),{})
+            ptr_records = optional(map(object({
                 name = string
                 ttl = number
-                records = list(string)
-            })))
+                records = list(string)                
+            })),{})
         })), {})
     })
     description = "The Networing resources of the landing zone. The networking resources will be created in the resource group specified in the resource groups variable."

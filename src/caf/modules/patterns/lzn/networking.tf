@@ -26,6 +26,7 @@ module "private_dns_zones" {
     source = "../../resources/networking/private_dns_zone"
     for_each = var.networking.private_dns_zones
     name = each.value.name
+    location = each.value.location
     resource_group_name = each.value.resource_group_name
     tags = each.value.tags
     mx_records = each.value.mx_records

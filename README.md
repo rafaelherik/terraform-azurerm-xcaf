@@ -11,7 +11,6 @@ This project is a way to fill the gap and provide a different way to implement A
 This project is following the principles of:
 
 - [Azure Landing Zones](https://learn.microsoft.com/en-us/azure/cloud-adoption-framework/ready/landing-zone/) 
-- [Azure Landing Zone Accelerator](https://github.com/Azure/ALZ-Landing-Zone-Accelerator).
 - [Azure Verified Modules](https://azure.github.io/Azure-Verified-Modules/) - All the modules are implementing the interfaces of Azure Verified Modules.
 
 

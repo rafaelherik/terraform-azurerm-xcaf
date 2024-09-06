@@ -44,5 +44,20 @@ module "hub-lz" {
             }
         }
     }
+    private_dns_zones = {
+        hub_private_dns_zone = {
+            name = "hub.private.dns.zone"
+            resource_group_name = "hub-rg"
+            tags = { type = "hub" }
+            location = "westeurope"
+            a_records = {
+                hub_private_dns_zone_a_record = {
+                    name = "proxy"
+                    ttl = 3600
+                    records = ["10.0.0.100"]
+                }
+            }
+        }
+    }
    }
 }
