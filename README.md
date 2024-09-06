@@ -4,15 +4,15 @@ Terraform module for Cloud Adoption Framework in a different way.
 # Roadmap
 This repo is in an early stage and all the modules are not implemented. The roadmap is to implement all the modules and have a full working solution.
 
-- [ ] Implement the governance module
-- [ ] Implement the networking module
-- [ ] Implement the compute module
-- [ ] Implement the storage module
-- [ ] Implement the database module
-- [ ] Implement the security module
-- [ ] Implement the monitoring module
-- [ ] Implement the machine learning module
-- [ ] Implement the automation module
+- [ ] Implement the governance module - *In progress*
+- [ ] Implement the networking module - *Waiting*
+- [ ] Implement the compute module - *Waiting
+- [ ] Implement the storage module - *Waiting
+- [ ] Implement the database module - *Waiting
+- [ ] Implement the security module - *Waiting
+- [ ] Implement the monitoring module - *Waiting
+- [ ] Implement the machine learning module - *Waiting
+- [ ] Implement the automation module - *Waiting
 
 
 ## Manifesto

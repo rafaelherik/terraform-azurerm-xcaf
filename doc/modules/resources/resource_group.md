@@ -24,6 +24,11 @@ module "resource_group" {
         "role_definition_id_or_name" = {
             "principal_id" = "principal_id"
             "role_definition_id" = "role_definition_id"
+            "condition" = "condition"
+            "condition_version" = "condition_version"
+            "delegated_managed_identity_resource_id" = "delegated_managed_identity_resource_id"
+            "principal_type" = "principal_type"
+            "skip_service_principal_aad_check" = true
         }
     }
 }
