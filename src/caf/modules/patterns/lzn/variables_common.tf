@@ -9,11 +9,11 @@ variable "tags" {
 }
 
 variable "resource_groups" {
-    type = list(map(object({
+    type = map(object({
         name = string
         location = string
         tags = map(string)
-    })))    
+    })) 
     description = "The resource groups of the landing zone. Each resource group will be created in the default location of the landing zone if not specified."    
 }
 

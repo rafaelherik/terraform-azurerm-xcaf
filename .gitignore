@@ -18,3 +18,9 @@ crash.*.log
 
 # Prevent the backend.tf from being tracked
 ./src/caf/backend.tf
+
+# Prevent the .env.sh from being tracked
+.env.sh
+
+
+/src/caf/.terraform

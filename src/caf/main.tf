@@ -14,21 +14,25 @@ provider "azurerm" {
 
 module "hub-lz" {   
    source = "./modules/patterns/lzn"   
-   locations = ["eastus", "westus"]
+   locations = ["westeurope", "northeurope"]
    name = "hub"
    tags = { lz = "hub"}
-   resource_groups = [{
+   resource_groups = {
         hub = {
-            name = "hub"
-            location = "eastus"
+            name = "hub-rg"
+            location = "westeurope"
             tags = { type = "hub" }
         }
-   }]
+   }
    networking = {
-    vnets = [{
+    vnets = {
         hub_vnet = {
-            address_space = "10.0.0.0/16"
-            subnets = [{
+            name = "hub-vnet"
+            location = "westeurope"
+            tags = { type = "hub" }
+            resource_group_name = "hub-rg"
+            address_space = ["10.0.0.0/16"]
+            subnets = {
                 default = {
                     name = "hub"
                     address_prefix = "10.0.0.0/24"
@@ -37,9 +41,8 @@ module "hub-lz" {
                     name = "gateway"
                     address_prefix = "10.0.1.0/24"
                 }
-                }]
-                
+            }
         }
-    }]
+    }
    }
 }

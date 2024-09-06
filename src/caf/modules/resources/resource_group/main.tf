@@ -1,6 +1,6 @@
-resource "azurerm_resource_group" "rg" {
+resource "azurerm_resource_group" "resource_group" {
     name = var.name
     location = var.location
-    tags = merge(var.tags, each.value.tags)
+    tags = var.tags
 }
 

@@ -8,19 +8,10 @@ output "available_locations" {
 }
 
 output "resource_groups" {
-    value = [for rg in var.resource_groups : {
-        id = rg.name
-        name = rg.name
+    value = [for rg in module.resource_groups: {
+        id = rg.resource_group.id
+        name = rg.resource_group.name
     }]
 }
 
-output "virtual_networks" {
-    value = [for vnet in var.networking.vnets : {
-        id = vnet.name
-        name = vnet.name
-        subnets = [for subnet in vnet.subnets : {
-            id = subnet.name
-            name = subnet.name
-        }]
-    }]
-}
+

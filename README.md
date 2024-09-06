@@ -36,7 +36,7 @@ This project is not affiliated with Microsoft. It is a personal project to fill 
 
 ### Requirements
 
-- Terraform CLI or OpenTofu CLI
+- Terraform CLI
 - Azure CLI
 - Azure Subscription
 
@@ -46,10 +46,25 @@ This project is not affiliated with Microsoft. It is a personal project to fill 
 git clone https://github.com/Azure/terraform-azurerm-xcaf.git
 ```
 
+### Configure the environment variables
+
+Create a `.env.sh` file with the following variables, you can use the `.env.sh.template` as a template:
+
+```bash
+export ARM_SUBSCRIPTION_ID="<<ARM_SUBSCRIPTION_ID>>"
+export ARM_TENANT_ID="<<ARM_TENANT_ID>>"
+export ARM_CLIENT_ID="<<ARM_CLIENT_ID>>"
+export ARM_CLIENT_SECRET="<<ARM_CLIENT_SECRET>>"
+
+This file is used to configure the environment variables for the project.
+
+```bash
+source .env.sh
+```
+
 ### Configure the Makefile
 
-The Makefile is used to run the Terraform/*OpenTofu* commands. It is used to initialize the OpenTofu CLI, plan, apply, destroy and other commands.
-If you want to use the Terraform CLI, you can replate the `tofu` for `terraform` on the Makefile.
+The Makefile is used to run the Terraform commands. It is used to initialize the Terraform CLI, plan, apply, destroy and other commands.
 
 ```bash
 make help

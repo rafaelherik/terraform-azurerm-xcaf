@@ -1,19 +1,27 @@
+include .env.sh
+
 # Terraform variables
 TF_DIR := ./src/caf
-TF_VARS := $(TF_DIR)/test.tfvars
+TF_VARS := ./test.tfvars
 
 # OpenTofu commands
 init:
-	tofu -chdir=$(TF_DIR) init
+	terraform -chdir=$(TF_DIR) init
+
+init-migrate:
+	terraform -chdir=$(TF_DIR) init -migrate-state
 
 plan:
-	tofu -chdir=$(TF_DIR) plan -var-file=$(TF_VARS)
+	terraform -chdir=$(TF_DIR) plan 
 
 apply:
-	tofu -chdir=$(TF_DIR) apply -var-file=$(TF_VARS) -auto-approve
+	terraform -chdir=$(TF_DIR) apply -auto-approve
 
 destroy:
-	tofu -chdir=$(TF_DIR) destroy -var-file=$(TF_VARS) -auto-approve
+	terraform -chdir=$(TF_DIR) destroy  -auto-approve
+
+tf-help:
+	terraform -help
 
 # Combined target for init, plan, and apply
 tofu-all: tofu-init tofu-plan tofu-apply

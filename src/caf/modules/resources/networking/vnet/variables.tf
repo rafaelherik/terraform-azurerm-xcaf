@@ -24,9 +24,9 @@ variable "tags" {
 }
 
 variable "subnets" {
-    type = list(map(object({
+    type = map(object({
         name = string
         address_prefix = string
-    })))
+    }))
     description = "The subnets of the virtual network"
 }
