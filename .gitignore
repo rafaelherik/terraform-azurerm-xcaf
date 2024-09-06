@@ -12,3 +12,9 @@ override.tf.json
 .terraform.lock.hcl
 crash.log
 crash.*.log
+
+# Prevent the .terraform directory and backend.tf from being tracked
+./src/caf/.terraform
+
+# Prevent the backend.tf from being tracked
+./src/caf/backend.tf
