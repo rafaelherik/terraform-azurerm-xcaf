@@ -59,5 +59,20 @@ module "hub-lz" {
             }
         }
     }
+    dns_zones = {
+        comapny_dns_zone = {
+            name = "company.com"
+            resource_group_name = "hub-rg"
+            tags = { type = "hub" }
+            location = "westeurope"
+            cname_records = {
+                comapny_cname_record = {
+                    name = "www"
+                    ttl = 3600
+                    record = "company.com"
+                }
+            }
+        }
+    }
    }
 }

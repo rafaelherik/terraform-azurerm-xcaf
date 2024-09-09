@@ -29,8 +29,20 @@ module "hub-lzn" {
                 tags = {
                     lz = "hub"
                 }
-                a_records = []
-                cname_records = []
+                a_records = [
+                    {
+                        name = "sql-1"
+                        ttl = 3600
+                        records = ["10.0.0.1"]
+                    }
+                ]
+                cname_records = [
+                    {
+                        name = "sql-2"
+                        ttl = 3600
+                        record = "sql.hub.privatelink.azure.com"
+                    }
+                ]
                 mx_records = []
                 srv_records = []
                 txt_records = []

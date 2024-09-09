@@ -12,7 +12,28 @@ variable "networking" {
                 address_prefix = string
             })))
             tags = map(string)
-        })), {})        
+        })), {}) 
+        dns_zones = optional(map(object({
+            name = string
+            resource_group_name = string
+            location = string
+            tags = map(string)
+            cname_records = optional(map(object({
+                name = string
+                ttl = number
+                record = string
+            })),{})
+            role_assignments = optional(map(object({
+                principal_id = string
+                role_definition_id = string
+                condition = optional(string)
+                condition_version = optional(string)
+                delegated_managed_identity_resource_id = optional(string)
+                principal_type = optional(string)
+                role_definition_id_or_name = optional(string)
+                skip_service_principal_aad_check = optional(bool)
+            })),{})
+        })), {})
         private_dns_zones = optional(map(object({
             name = string
             resource_group_name = string
@@ -74,10 +95,7 @@ variable "networking" {
         vnets = {}    
         private_dns_zones = {}
     }
-
-  
 }
-
 
 locals {
     # Validate if the vnets are in one of the locations specified in the locations variable
